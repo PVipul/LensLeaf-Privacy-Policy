@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LensLeaf - Account & Data Deletion</title>
+  <meta name="description" content="Request deletion of your LensLeaf account and associated data.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f5ef;
+      color: #222;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 720px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    }
+    h1 {
+      margin-top: 0;
+      color: #5f7628;
+      font-size: 30px;
+    }
+    h2 {
+      color: #5f7628;
+      font-size: 20px;
+      margin-top: 28px;
+    }
+    .note {
+      background: #f0f3e8;
+      border-left: 4px solid #99b141;
+      padding: 14px 16px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin: 18px 0 7px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 8px;
+      background: #99b141;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover { background: #849b38; }
+    .small {
+      color: #666;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>LensLeaf Account & Data Deletion</h1>
+
+      <p>
+        Use this page to request deletion of your LensLeaf account and
+        associated data.
+      </p>
+
+      <div class="note">
+        <strong>What will happen?</strong><br>
+        After we verify your request, your LensLeaf account and associated
+        account data will be deleted. Data that is required to be retained
+        by law, if any, will be retained only as required.
+      </div>
+
+      <h2>Request account deletion</h2>
+
+      <form id="deleteForm">
+        <label for="email">Email address used with LensLeaf</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        >
+
+        <label for="message">Additional information (optional)</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Anything you would like us to know..."
+        ></textarea>
+
+        <button type="submit">Submit Deletion Request</button>
+      </form>
+
+      <p class="small">
+        We may contact you at the provided email address to verify ownership
+        of the account before processing the deletion request.
+      </p>
+    </div>
+
+    <footer>
+      © LensLeaf. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // IMPORTANT:
+    // Replace this with the real email address used for LensLeaf support.
+    const SUPPORT_EMAIL = "panchalvipulb@gmail.com";
+
+    document.getElementById("deleteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (SUPPORT_EMAIL === "panchalvipulb@gmail.com") {
+        alert("Please configure the LensLeaf support email address first.");
+        return;
+      }
+
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = "LensLeaf Account Deletion Request";
+      const body =
+        "Hello LensLeaf Support,%0D%0A%0D%0A" +
+        "I would like to request deletion of my LensLeaf account and associated data.%0D%0A%0D%0A" +
+        "LensLeaf account email: " + encodeURIComponent(email) + "%0D%0A%0D%0A" +
+        "Additional information:%0D%0A" + encodeURIComponent(message) +
+        "%0D%0A%0D%0AThank you.";
+
+      window.location.href =
+        "mailto:" + SUPPORT_EMAIL +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + body;
+    });
+  </script>
+</body>
+</html>
